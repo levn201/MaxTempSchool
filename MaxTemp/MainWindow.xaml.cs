@@ -23,6 +23,9 @@ namespace MaxTemp
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S1" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S2" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S3" });
+            MyComboBox.Items.Add(new ComboBoxItem { Content = "S4" });
+            MyComboBox.Items.Add(new ComboBoxItem { Content = "SB" });
+            MyComboBox.Items.Add(new ComboBoxItem { Content = "SD" });
         }
 
         // Methode, die bei einer Änderung der Auswahl aufgerufen wird
@@ -54,57 +57,38 @@ namespace MaxTemp
                 {
                     List<TempData> datenListe = new List<TempData>();
 
-
                     // 2. Zeilenweise die Daten lesen und nach dem Server filtern
                     while (!reader.EndOfStream)
                     {
                         string zeile = reader.ReadLine();
-                        string[] werte = zeile.Split(','); // Annahme: CSV-Werte durch Komma getrennt
+                        string[] werte = zeile.Split(',');
 
-                        // Fehlerprüfung: Sind genügend Spalten vorhanden?
-                        if (werte.Length < 4)
+                        if (werte.Length == 3)
                         {
-                            continue; // Ungültige Zeile ignorieren
-                        }
-
-                        // Filter nach Server
-                        if (werte[0] == server)
-                        {
-                            // Konvertierung der Temperatur. Wenn nicht konvertierbar, Zeile überspringen
-                            if (int.TryParse(werte[3], out int temperatur))
+                            if (werte[0] == selectedValue)
                             {
-                                // Konvertierung von Datum und Uhrzeit
-                                if (DateTime.TryParse(werte[1], out DateTime datum) && TimeSpan.TryParse(werte[2], out TimeSpan uhrzeit))
-                                {
-                                    TempData daten = new TempData
-                                    {
-                                        Server = werte[0],          // 1. Spalte: Server
-                                        Datum = datum,              // 2. Spalte: Datum
-                                        Uhrzeit = uhrzeit,          // 3. Spalte: Uhrzeit
-                                        Temperatur = temperatur      // 4. Spalte: Temperatur
-                                    };
-
-                                    datenListe.Add(daten); // Hinzufügen zur Liste
-                                }
+                                TempData tempData = new TempData();
+                                tempData.Server = werte[0];
+                                tempData.Datum = DateTime.Parse(werte[1]);
+                                tempData.Temperatur = double.Parse(werte[2]);
+                                datenListe.Add(tempData);
                             }
                         }
                     }
 
-                    // 3. Gefilterte Daten ausgeben
-                    if (datenListe.Count > 0)
+                    // Gefilterte Daten ausgeben
+                    if (datenListe.Any())
                     {
-                        StringBuilder ausgabeText = new StringBuilder();
-                        foreach (var daten in datenListe)
-                        {
-                            ausgabeText.AppendLine($"Server: {daten.Server}, Datum: {daten.Datum.ToShortDateString()}, Uhrzeit: {daten.Uhrzeit}, Temperatur: {daten.Temperatur}°C");
-                        }
+                        var sortedData = datenListe.OrderBy(d => d.Datum);
 
-                        lblAusgabe.Text = ausgabeText.ToString(); // Ausgabe in der TextBox
+                        lblAusgabe.Text = string.Join("\n", sortedData.Select(d => $"{d.Server}, {d.Datum}, {d.Temperatur}"));
                     }
                     else
                     {
                         lblAusgabe.Text = $"Keine Daten für Server {server} gefunden.";
                     }
+
+
                 }
             }
             catch (Exception ex)
@@ -131,8 +115,16 @@ namespace MaxTemp
         {
             public string Server { get; set; }
             public DateTime Datum { get; set; }
-            public TimeSpan Uhrzeit { get; set; }
-            public int Temperatur { get; set; }
+            public double Temperatur { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Server}, {Datum}, {Temperatur}";
+            }
         }
+
+
+        List<TempData> datenListe = new List<TempData>();
+
     }
 }
