@@ -70,7 +70,7 @@ namespace MaxTemp
                                 TempData tempData = new TempData();
                                 tempData.Server = werte[0];
                                 tempData.Datum = DateTime.Parse(werte[1]);
-                                tempData.Temperatur = double.Parse(werte[2]);
+                                tempData.Temperatur = double.Parse(werte[2]); //////Testpowsüoxwiqüojisüowqjisiwjqü
                                 datenListe.Add(tempData);
                             }
                         }
