@@ -16,19 +16,20 @@ namespace MaxTemp
         {
             InitializeComponent();
 
-            // Eventhandler hinzufügen, um Änderungen zu speichern
             MyComboBox.SelectionChanged += MyComboBox_SelectionChanged_1;
 
-            // Beispieldaten in der ComboBox (Server S1, S2, S3)
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S1" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S2" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S3" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S4" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "SB" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "SD" });
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
         }
 
-        // Methode, die bei einer Änderung der Auswahl aufgerufen wird
         private void MyComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem)MyComboBox.SelectedItem;
@@ -38,11 +39,10 @@ namespace MaxTemp
             }
         }
 
-        // Methode zum Filtern der Daten nach dem Server
         private void FilterAndDisplayDataByServer(string server)
         {
-            // Überprüfen, ob die Datei existiert
-            string filePath = @"temps.csv"; // Relativer Pfad zur CSV-Datei
+
+            string filePath = @"temps.csv";
             if (!File.Exists(filePath))
             {
                 MessageBox.Show($"Datei nicht gefunden: {filePath}", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -51,13 +51,17 @@ namespace MaxTemp
 
             try
             {
-                // 1. CSV-Datei einlesen
+
                 using (FileStream infoAusgabe = new FileStream(filePath, FileMode.Open))
                 using (StreamReader reader = new StreamReader(infoAusgabe))
                 {
                     List<TempData> datenListe = new List<TempData>();
 
+<<<<<<< HEAD
+
+=======
                     // 2. Zeilenweise die Daten lesen und nach dem Server filtern
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
                     while (!reader.EndOfStream)
                     {
                         string zeile = reader.ReadLine();
@@ -70,18 +74,31 @@ namespace MaxTemp
                                 TempData tempData = new TempData();
                                 tempData.Server = werte[0];
                                 tempData.Datum = DateTime.Parse(werte[1]);
+<<<<<<< HEAD
+                                tempData.Temperatur = double.Parse(werte[2].Replace(".",","));
+=======
                                 tempData.Temperatur = double.Parse(werte[2]); //////Testpowsüoxwiqüojisüowqjisiwjqü
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
                                 datenListe.Add(tempData);
                             }
                         }
                     }
 
+<<<<<<< HEAD
+
+                    if (datenListe.Any())
+                    {
+                        var sortedData = datenListe.OrderByDescending(t => t.Temperatur); //Sotierung nach entweder dem Datum oder der Temperatur 
+
+                        lblAusgabe.Text =string.Join("\n", sortedData.Select(d => $"{d.Server}, {d.Datum}, {d.Temperatur}"));
+=======
                     // Gefilterte Daten ausgeben
                     if (datenListe.Any())
                     {
                         var sortedData = datenListe.OrderBy(d => d.Datum);
 
                         lblAusgabe.Text = string.Join("\n", sortedData.Select(d => $"{d.Server}, {d.Datum}, {d.Temperatur}"));
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
                     }
                     else
                     {
@@ -97,7 +114,6 @@ namespace MaxTemp
             }
         }
 
-        // Eventhandler für den "Auswerten"-Button
         private void BtnAuswerten_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(selectedValue))
@@ -110,7 +126,7 @@ namespace MaxTemp
             }
         }
 
-        // Klasse zum Speichern der Temperaturdaten
+
         public class TempData
         {
             public string Server { get; set; }
