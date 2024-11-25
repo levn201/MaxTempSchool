@@ -24,7 +24,10 @@ namespace MaxTemp
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S4" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "SB" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "SD" });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
         }
 
         private void MyComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
@@ -54,7 +57,11 @@ namespace MaxTemp
                 {
                     List<TempData> datenListe = new List<TempData>();
 
+<<<<<<< HEAD
 
+=======
+                    // 2. Zeilenweise die Daten lesen und nach dem Server filtern
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
                     while (!reader.EndOfStream)
                     {
                         string zeile = reader.ReadLine();
@@ -67,18 +74,31 @@ namespace MaxTemp
                                 TempData tempData = new TempData();
                                 tempData.Server = werte[0];
                                 tempData.Datum = DateTime.Parse(werte[1]);
+<<<<<<< HEAD
                                 tempData.Temperatur = double.Parse(werte[2].Replace(".",","));
+=======
+                                tempData.Temperatur = double.Parse(werte[2]); //////Testpowsüoxwiqüojisüowqjisiwjqü
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
                                 datenListe.Add(tempData);
                             }
                         }
                     }
 
+<<<<<<< HEAD
 
                     if (datenListe.Any())
                     {
                         var sortedData = datenListe.OrderByDescending(t => t.Temperatur); //Sotierung nach entweder dem Datum oder der Temperatur 
 
                         lblAusgabe.Text =string.Join("\n", sortedData.Select(d => $"{d.Server}, {d.Datum}, {d.Temperatur}"));
+=======
+                    // Gefilterte Daten ausgeben
+                    if (datenListe.Any())
+                    {
+                        var sortedData = datenListe.OrderBy(d => d.Datum);
+
+                        lblAusgabe.Text = string.Join("\n", sortedData.Select(d => $"{d.Server}, {d.Datum}, {d.Temperatur}"));
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
                     }
                     else
                     {

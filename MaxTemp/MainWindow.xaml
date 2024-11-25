@@ -21,7 +21,11 @@
 
             <ComboBox x:Name="MyComboBox" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="MyComboBox_SelectionChanged_1" Grid.Column="1"/>
 
+<<<<<<< HEAD
             <Button x:Name="BtnAuswerten" Content="Auswerten" HorizontalAlignment="Left" Margin="67,40,0,0" VerticalAlignment="Top" Width="75" Click="BtnAuswerten_Click" Grid.Column="4"/>
+=======
+            <Button x:Name="BtnAuswerten" Content="Auswerten" HorizontalAlignment="Left" Margin="68,46,0,0" VerticalAlignment="Top" Width="75" Click="BtnAuswerten_Click" Grid.Column="4"/>
+>>>>>>> 5761eacc1bc39d8ec4483f8fbc40e1a0bfdc3436
 
             <TextBox x:Name="lblAusgabe" HorizontalAlignment="Left" Margin="0,92,0,0" VerticalAlignment="Top" Width="306" Height="112" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Grid.ColumnSpan="5"/>
         </Grid>
