@@ -16,16 +16,17 @@ namespace MaxTemp
         {
             InitializeComponent();
 
-            // Eventhandler hinzufügen, um Änderungen zu speichern
             MyComboBox.SelectionChanged += MyComboBox_SelectionChanged_1;
 
-            // Beispieldaten in der ComboBox (Server S1, S2, S3)
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S1" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S2" });
             MyComboBox.Items.Add(new ComboBoxItem { Content = "S3" });
+            MyComboBox.Items.Add(new ComboBoxItem { Content = "S4" });
+            MyComboBox.Items.Add(new ComboBoxItem { Content = "SB" });
+            MyComboBox.Items.Add(new ComboBoxItem { Content = "SD" });
+
         }
 
-        // Methode, die bei einer Änderung der Auswahl aufgerufen wird
         private void MyComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedItem = (ComboBoxItem)MyComboBox.SelectedItem;
@@ -35,11 +36,10 @@ namespace MaxTemp
             }
         }
 
-        // Methode zum Filtern der Daten nach dem Server
         private void FilterAndDisplayDataByServer(string server)
         {
-            // Überprüfen, ob die Datei existiert
-            string filePath = @"temps.csv"; // Relativer Pfad zur CSV-Datei
+
+            string filePath = @"temps.csv";
             if (!File.Exists(filePath))
             {
                 MessageBox.Show($"Datei nicht gefunden: {filePath}", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -48,63 +48,44 @@ namespace MaxTemp
 
             try
             {
-                // 1. CSV-Datei einlesen
+
                 using (FileStream infoAusgabe = new FileStream(filePath, FileMode.Open))
                 using (StreamReader reader = new StreamReader(infoAusgabe))
                 {
                     List<TempData> datenListe = new List<TempData>();
 
 
-                    // 2. Zeilenweise die Daten lesen und nach dem Server filtern
                     while (!reader.EndOfStream)
                     {
                         string zeile = reader.ReadLine();
-                        string[] werte = zeile.Split(','); // Annahme: CSV-Werte durch Komma getrennt
+                        string[] werte = zeile.Split(',');
 
-                        // Fehlerprüfung: Sind genügend Spalten vorhanden?
-                        if (werte.Length < 4)
+                        if (werte.Length == 3)
                         {
-                            continue; // Ungültige Zeile ignorieren
-                        }
-
-                        // Filter nach Server
-                        if (werte[0] == server)
-                        {
-                            // Konvertierung der Temperatur. Wenn nicht konvertierbar, Zeile überspringen
-                            if (int.TryParse(werte[3], out int temperatur))
+                            if (werte[0] == selectedValue)
                             {
-                                // Konvertierung von Datum und Uhrzeit
-                                if (DateTime.TryParse(werte[1], out DateTime datum) && TimeSpan.TryParse(werte[2], out TimeSpan uhrzeit))
-                                {
-                                    TempData daten = new TempData
-                                    {
-                                        Server = werte[0],          // 1. Spalte: Server
-                                        Datum = datum,              // 2. Spalte: Datum
-                                        Uhrzeit = uhrzeit,          // 3. Spalte: Uhrzeit
-                                        Temperatur = temperatur      // 4. Spalte: Temperatur
-                                    };
-
-                                    datenListe.Add(daten); // Hinzufügen zur Liste
-                                }
+                                TempData tempData = new TempData();
+                                tempData.Server = werte[0];
+                                tempData.Datum = DateTime.Parse(werte[1]);
+                                tempData.Temperatur = double.Parse(werte[2].Replace(".",","));
+                                datenListe.Add(tempData);
                             }
                         }
                     }
 
-                    // 3. Gefilterte Daten ausgeben
-                    if (datenListe.Count > 0)
-                    {
-                        StringBuilder ausgabeText = new StringBuilder();
-                        foreach (var daten in datenListe)
-                        {
-                            ausgabeText.AppendLine($"Server: {daten.Server}, Datum: {daten.Datum.ToShortDateString()}, Uhrzeit: {daten.Uhrzeit}, Temperatur: {daten.Temperatur}°C");
-                        }
 
-                        lblAusgabe.Text = ausgabeText.ToString(); // Ausgabe in der TextBox
+                    if (datenListe.Any())
+                    {
+                        var sortedData = datenListe.OrderByDescending(t => t.Temperatur); //Sotierung nach entweder dem Datum oder der Temperatur 
+
+                        lblAusgabe.Text =string.Join("\n", sortedData.Select(d => $"{d.Server}, {d.Datum}, {d.Temperatur}"));
                     }
                     else
                     {
                         lblAusgabe.Text = $"Keine Daten für Server {server} gefunden.";
                     }
+
+
                 }
             }
             catch (Exception ex)
@@ -113,7 +94,6 @@ namespace MaxTemp
             }
         }
 
-        // Eventhandler für den "Auswerten"-Button
         private void BtnAuswerten_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(selectedValue))
@@ -126,13 +106,21 @@ namespace MaxTemp
             }
         }
 
-        // Klasse zum Speichern der Temperaturdaten
+
         public class TempData
         {
             public string Server { get; set; }
             public DateTime Datum { get; set; }
-            public TimeSpan Uhrzeit { get; set; }
-            public int Temperatur { get; set; }
+            public double Temperatur { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Server}, {Datum}, {Temperatur}";
+            }
         }
+
+
+        List<TempData> datenListe = new List<TempData>();
+
     }
 }
