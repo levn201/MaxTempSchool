@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|c:\\_source\\berufsschule\\mainprojekte\\maxtempproject\\maxtempverbesserung\\maxtemp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|solutionrelative:maxtemp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\maxtemp\\temps.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|solutionrelative:maxtemp\\temps.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\maxtemp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|solutionrelative:maxtemp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\maxtemp\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B45271A9-5D2D-48EF-9A99-BF38062C3AB8}|MaxTemp\\MaxTemp.csproj|solutionrelative:maxtemp\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "temps.csv",
+              "DocumentMoniker": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\temps.csv",
+              "RelativeDocumentMoniker": "MaxTemp\\temps.csv",
+              "ToolTip": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\temps.csv",
+              "RelativeToolTip": "MaxTemp\\temps.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2024-10-10T11:55:53.257Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MaxTemp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MaxTemp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAEkAAAAAAJqZmZmpv0gAAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T11:56:11.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "MaxTemp\\Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "MaxTemp\\Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T08:47:59.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MaxTemp\\MainWindow.xaml",
+              "ToolTip": "C:\\_Source\\berufsschule\\mainProjekte\\MaxTempProject\\MaxTempVerbesserung\\MaxTemp\\MainWindow.xaml",
+              "RelativeToolTip": "MaxTemp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-09T08:41:45.248Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
